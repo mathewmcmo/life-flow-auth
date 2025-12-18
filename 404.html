@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeFlow Login</title>
+    <style>
+        body {
+            background-color: #0A0E17; /* Dein App Background ca. */
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        h1 { font-size: 24px; margin-bottom: 10px; }
+        p { color: #8899A6; margin-bottom: 30px; }
+        .btn {
+            background-color: #ff5722; /* Dein Primary Orange */
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: bold;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Opening LifeFlow...</h1>
+        <p>You have been verified.</p>
+        <a id="btn" href="#" class="btn">Open App manually</a>
+    </div>
+
+    <script>
+        // 1. Hole die Parameter aus der URL (z.B. ?code=... oder #access_token=...)
+        const params = window.location.search + window.location.hash;
+        
+        // 2. Baue den Deep Link für deine App
+        // WICHTIG: Das muss exakt dein Schema sein!
+        const deepLink = "com.matthias.life_flow://login-callback" + params;
+
+        // 3. Setze den Button Link (falls Auto-Redirect blockiert wird)
+        document.getElementById("btn").href = deepLink;
+
+        // 4. Versuche automatische Weiterleitung
+        window.location.href = deepLink;
+        
+        // Optional: Nach kurzer Zeit Fenster schließen (funktioniert nicht in allen Browsern)
+        setTimeout(() => {
+            // window.close(); 
+        }, 2000);
+    </script>
+</body>
+</html>
