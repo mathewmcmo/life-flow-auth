@@ -49,7 +49,7 @@
         
         // 2. Baue den Deep Link für deine App
         // WICHTIG: Das muss exakt dein Schema sein!
-        const deepLink = "com.matthias.life_flow://login-callback" + params;
+        const deepLink = "lifeflow://login-callback" + params;
 
         // 3. Setze den Button Link (falls Auto-Redirect blockiert wird)
         document.getElementById("btn").href = deepLink;
@@ -63,4 +63,5 @@
         }, 2000);
     </script>
 </body>
+
 </html>
